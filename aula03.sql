@@ -32,13 +32,15 @@ CREATE DOMAIN chk_status AS text CHECK (VALUE IN ('DISPONIVEL', 'ALUGADO'));
 
 -- adicionar domain a tabela
 
-ALTER TABLE cliente ADD CONSTRAINT idade CHECK (idade > 10);
+ALTER TABLE tbl_cliente ADD COLUMN idade INT; ALTER TABLE tbl_cliente 
+ADD CONSTRAINT idade CHECK (idade > 10);
+
 
 -- Renomeando a restrição
-ALTER TABLE cliente RENAME CONSTRAINT idade TO idades;
+ALTER TABLE tbl_cliente RENAME CONSTRAINT idade TO idades;
 
 -- Removendo a restrição
-ALTER TABLE cliente DROP CONSTRAINT idades;
+ALTER TABLE tbl_cliente DROP CONSTRAINT idades;
 
 -- adicionar chaves estrangeiras
 

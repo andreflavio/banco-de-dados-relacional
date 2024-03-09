@@ -66,10 +66,12 @@ WHERE tbl_livros.status = 'DISPONIVEL';
 --5 Liste os nomes dos clientes e os títulos dos livros que eles têm alugados (retorna 5 linhas)
 SELECT tbl_cliente.nome, tbl_titulo.titulo
 FROM tbl_cliente
-INNER JOIN tbl_emprestimo ON tbl_cliente.codigo_cliente = tbl_emprestimo.codigo_cliente
-INNER JOIN tbl_livros ON tbl_emprestimo.codigo_livro = tbl_livros.cod_livro
-INNER JOIN tbl_titulo ON tbl_livros.codigo_titulo = tbl_titulo.codigo_titulo
-WHERE tbl_livros.status = 'ALUGADO';
+LEFT JOIN tbl_emprestimo ON tbl_cliente.codigo_cliente = tbl_emprestimo.codigo_cliente
+LEFT JOIN tbl_livros ON tbl_emprestimo.codigo_livro = tbl_livros.cod_livro
+LEFT JOIN tbl_titulo ON tbl_livros.codigo_titulo = tbl_titulo.codigo_titulo
+WHERE tbl_livros.status = 'ALUGADO' OR tbl_livros.status IS NULL;
+
+
 
 --6 Retorne o nome, titulo do livro e o status do esmprestimo do livro alugado pela Ana Oliveira (retorna 1 linha)
 SELECT tbl_cliente.nome, tbl_titulo.titulo, tbl_livros.status

@@ -37,6 +37,8 @@ VALUES
     (2, 2, 4),
     (3, 3, 1),
     (4, 4, 5);
+
+    -- EXERCÍCIOS PARA RESOLVER 
     
 --1 Liste os títulos e seus status, incluindo os que não têm status definido. (retorna 6 linhas)
 SELECT tbl_titulo.titulo, tbl_livros.status
